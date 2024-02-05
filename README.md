@@ -4,7 +4,7 @@
 
 ## Implementation of Simple Express.js App with Redis for Rate Limiting and Cached Data
 
-![redis-diagram.png](Redis,%20S3%20Bucket%20&%20Typescript%20Integration%20Boost%20Yo%204e4e12eb29c74ffaa280f179eedd052c/redis-diagram.png)
+![redis-diagram](https://github.com/SahadevDahit/redis-s3-bucket/assets/81854544/6d64bd44-0867-4529-a954-f3af364aaeb7)
 
 1. **Redis Usage**: The code utilizes Redis, a key-value store, for caching information related to sign-up attempts.
 2. **IP-based Rate Limiting**: Sign-up attempts are tracked and limited on a per-IP basis. The IP address is obtained from the incoming request.
@@ -58,15 +58,15 @@ Set up the project
 
 You need to create the IAM user from your root account and provide permission to acess the s3 bucket. And create access key for IAM user. Make sure that your ACLs is enabled.
 
-![s3bucket.PNG](Redis,%20S3%20Bucket%20&%20Typescript%20Integration%20Boost%20Yo%204e4e12eb29c74ffaa280f179eedd052c/s3bucket.png)
+![s3bucket](https://github.com/SahadevDahit/redis-s3-bucket/assets/81854544/5d145884-987a-45bf-b764-30cd469f7c9d)
 
 1. For redis server connection
     
     Create an account in upstack [https://upstash.com/](https://upstash.com/)
     
     Then create redis database to get the required env variables.
-    
-    ![redisServer.PNG](Redis,%20S3%20Bucket%20&%20Typescript%20Integration%20Boost%20Yo%204e4e12eb29c74ffaa280f179eedd052c/redisServer.png)
+    ![redisServer](https://github.com/SahadevDahit/redis-s3-bucket/assets/81854544/db8c34f1-d2a6-4a18-b91d-1917c381938a)
+
     
     1. Make sure that you have proper mongoose connection
     2. And finally run the following command
