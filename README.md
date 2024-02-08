@@ -58,7 +58,8 @@ Set up the project
 
 You need to create the IAM user from your root account and provide permission to acess the s3 bucket. And create access key for IAM user. Make sure that your ACLs is enabled.
 
-![s3bucket](https://github.com/SahadevDahit/redis-s3-bucket/assets/81854544/4e80ebbd-1ff7-49c4-ae86-9d4f682d215d)
+
+![s3bucket](https://github.com/SahadevDahit/redis-s3-bucket/assets/81854544/7bdd12b6-d907-4a41-b8cd-b6ed199fd0c9)
 
 
 1. For redis server connection
