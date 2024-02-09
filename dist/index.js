@@ -1,29 +1,431 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
-const dbConn_1 = __importDefault(require("./config/dbConn"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const body_parser_1 = __importDefault(require("body-parser"));
-const users_1 = __importDefault(require("./routes/users"));
-const employees_1 = __importDefault(require("./routes/employees"));
-const globalErrHandler_1 = require("./middlewares/globalErrHandler");
-dotenv_1.default.config();
-const app = (0, express_1.default)();
-app.use(body_parser_1.default.json());
-app.use(body_parser_1.default.urlencoded({ extended: true }));
-const port = process.env.PORT || 4000;
-(0, dbConn_1.default)();
-app.use('/v1/users', users_1.default);
-app.use('/v1/employees', employees_1.default);
-app.get('/', (req, res) => {
-    res.status(200).send('Hello, TypeScript with Express!');
-});
-//err middleware
-app.use(globalErrHandler_1.notFound);
-app.use(globalErrHandler_1.globalErrhandler);
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+{
+    "info";
+    {
+        "_postman_id";
+        "0fd4ef49-55eb-4479-a1ba-0f58ab9bae26",
+            "name";
+        "s3-redis",
+            "schema";
+        "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+            "_exporter_id";
+        "31332073";
+    }
+    "item";
+    [
+        {
+            "name": "users",
+            "item": [
+                {
+                    "name": "signup",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"email\": \"dahit@example.com\",\r\n  \"password\": \"hunk123\",\r\n  \"contact\": \"12345678\",\r\n  \"role\": \"user\",\r\n  \"status\": true\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/users",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "signin",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\": \"dahit@example.com\",\r\n  \"password\": \"hunk1234\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/users/signin",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "users",
+                                "signin"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "getUsers",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/users",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "updateUser",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"securepassword\",\r\n  \"contact\": \"1234567890\",\r\n  \"role\": \"user\",\r\n  \"status\": true\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/users/65c00aea78b460a3bc791636",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "users",
+                                "65c00aea78b460a3bc791636"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "deleteUser",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/users/65c00a642a06fd02724c4310",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "users",
+                                "65c00a642a06fd02724c4310"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "employees",
+            "item": [
+                {
+                    "name": "getEmployee",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/employees/",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "employees",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "updateEmployee",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"firstName\": \"John1\",\r\n    \"lastName\": \"Doe\",\r\n    \"email\": \"john.doe@example.com\",\r\n    \"position\": \"Software Engineer\",\r\n    \"salary\": 80000\r\n}\r\n",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/employees/65c00f935941b4638cedf175",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "employees",
+                                "65c00f935941b4638cedf175"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "deleteEmployee",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/employees/65c00eade75ab1982308cadb",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "employees",
+                                "65c00eade75ab1982308cadb"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "signup",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/C:/Users/dell/Pictures/notes/productiveTools.png"
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "hunk",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "password",
+                                    "value": "hunk123",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "contact",
+                                    "value": "1234567890",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "role",
+                                    "value": "user",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "true",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/v1/users",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "v1",
+                                "users"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "s3Image",
+            "item": [
+                {
+                    "name": "upload",
+                    "request": {
+                        "method": "POST",
+                        "header": [],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "file",
+                                    "type": "file",
+                                    "src": "/C:/Users/dell/Pictures/Camera Roll/sd.png"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/upload",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "upload"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "download",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/image/1707473957521.jpg",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "image",
+                                "1707473957521.jpg"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "delete",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/image/1707473957521.jpg",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "image",
+                                "1707473957521.jpg"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "getImages",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/s3/images",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "s3",
+                                "images"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ];
+}

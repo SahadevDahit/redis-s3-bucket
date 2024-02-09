@@ -14,8 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.redisConn = void 0;
 const ioredis_1 = __importDefault(require("ioredis"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 const redisConn = () => __awaiter(void 0, void 0, void 0, function* () {
-    const client = new ioredis_1.default("rediss://default:7736f150aa224ad1a41b5287432b2b56@apn1-calm-vulture-34999.upstash.io:34999");
+    const client = new ioredis_1.default(`${process.env.redisConn}`);
     return client;
 });
 exports.redisConn = redisConn;

@@ -36,6 +36,7 @@ const uploadToS3 = (req: any, res: any, next: any) => {
         if (!req.file) {
             return res.status(400).json({ error: "No file provided" });
         }
+        console.log(req.file);
 
         const fileUrl = `https://${process.env.AWS_S3_BUCKET}.s3.amazonaws.com/${req.file.key}`;
         res.locals.fileUrl = fileUrl;
